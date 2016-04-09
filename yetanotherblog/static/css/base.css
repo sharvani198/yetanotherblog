@@ -1,0 +1,43 @@
+body {
+	font-family: 'Ubuntu Condensed', sans-serif;
+}
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+    color:inherit;
+}
+.fixed-side-div{
+	position: fixed;
+	left: 4em;
+}
+.text-content{
+	font-size: 1.5em;
+	white-space: pre-wrap;
+}
+.list-group-item{
+	margin-bottom: 1em;
+}
+#topics-button{
+	display:none;
+}
+#topics-text{
+	display: block;
+}
+@media screen and (max-width:650px){
+	.fixed-side-div{
+		position: static;
+		margin-top: 0%;
+	}
+	.picture-me {
+		position: relative;
+		top: 95%;
+	}
+	.about-div{
+		font-size: 0.5%;
+	}
+	#topics-button{
+		display: block;
+	}
+	#topics-text{
+		display:none;
+	}
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block side_div %}
+<div class="side-div">
+	<button class="btn btn-default" data-toggle="collapse" data-target="#topics-list" id="topics-button">Topics</button>
+	<h4 id="topics-text">Topics</h4>
+	<div class="list-group" id="topics-list">
+		<a href="javascript:filter('all');" class="list-group-item"><span class="badge">{{topics.count}}</span>All</a>
+		{% for t in topics %}
+			<a href="javascript:filter('{{t.topic}}');" class="list-group-item"><span class="badge">{{t.count}}</span>{{t.topic}}</a>
+		{% endfor %}
+	</div>	
+</div>
+{% endblock side_div %}
+
+{% block content_div %}
+<div class="blogs">
+</div>
+	
+{% endblock content_div %}
+{% block about_div %}
+<div class="about-div">
+	<h4>
+		Hey! I'm Sharvani. I work as a software developer in Bangalore. I love to code and write. 
+	</h4>	
+</div>
+{% endblock about_div %}
