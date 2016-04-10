@@ -1,0 +1,17 @@
+<div class="comments-div" ng-controller="CommentController">
+	<form method="POST"class="form-group" action="/addComment/">
+	{% csrf_token %}
+	<input type="hidden" name="id" value="{{post.id}}"></input>
+		<input type="text" name="author" class="form-control" placeholder="Your Name"></input>
+		<textarea name="text" placeholder="Your Thoughts" class="form-control" rows="3"></textarea>
+		<button class="form-control" type="submit">Add Comment</button>
+	</form>
+	<div class="comments-section">
+		<h4>{{comments.count}} Comments</h4>
+		{% for c in comments %}
+			<b>{{c.author}}</b>
+			<p>{{c.comment_text}}</p>
+			<hr>
+		{% endfor %}
+	</div>
+</div>

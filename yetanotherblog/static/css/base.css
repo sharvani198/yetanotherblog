@@ -8,6 +8,7 @@ a:hover, a:visited, a:link, a:active{
 .fixed-side-div{
 	position: fixed;
 	left: 4em;
+	width: 15%;
 }
 .text-content{
 	font-size: 1.5em;
@@ -16,11 +17,34 @@ a:hover, a:visited, a:link, a:active{
 .list-group-item{
 	margin-bottom: 1em;
 }
-#topics-button{
+#topics-button, #sort-button{
 	display:none;
 }
-#topics-text{
+#topics-text, #sort-text{
 	display: block;
+}
+.blog-div{
+	border: 0.5px solid lightgray;
+	margin-bottom: 1.5em;
+	border-radius: 5px;
+	padding-left: 3em;
+	padding-bottom: 1em;
+}
+.blog-div > h4 {
+	color: #777;
+}
+#sort-list > button {
+	cursor: default;
+}
+.sort-order{
+	z-index: 10;
+	cursor: pointer;
+}
+.sort-order:hover{
+	opacity: 0.8;
+}
+.form-control{
+	margin-bottom: 2px;
 }
 @media screen and (max-width:650px){
 	.fixed-side-div{
@@ -28,16 +52,15 @@ a:hover, a:visited, a:link, a:active{
 		margin-top: 0%;
 	}
 	.picture-me {
-		position: relative;
-		top: 95%;
+		display: none;
 	}
 	.about-div{
 		font-size: 0.5%;
 	}
-	#topics-button{
+	#topics-button, #sort-button{
 		display: block;
 	}
-	#topics-text{
+	#topics-text, #sort-text{
 		display:none;
 	}
 }

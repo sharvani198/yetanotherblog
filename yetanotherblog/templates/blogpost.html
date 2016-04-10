@@ -1,7 +1,14 @@
 {% extends "base.html" %}
+{% block meta_tags %}
+<meta property="og:url" content="yetanotherblog.in{{request.get_full_path}}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{post.title}}" />
+<meta property="og:description" content="{{post.topic}}" />
+<meta property="og:site_name" content="yetanotherblog" />	
+{% endblock meta_tags %}
 {% block side_div %}
 <div class="fixed-side-div">
-	<br><br>
+	<br><br>Sharing options<br>
  	<a class="btn btn-block btn-default" href="/">Back</a>
 	<h1>{{post.title}}</h1>
 	<h4>{{post.topic}}</h4>
@@ -11,8 +18,7 @@
 {% block content_div %}
 	<p class="text-content">{{content}}</p>
 {% endblock content_div %}
+
 {% block about_div %}
-<div class="fixed-side-div">
-	Sharing options	
-</div>
+	{% include "comments.html" %}
 {% endblock about_div %}

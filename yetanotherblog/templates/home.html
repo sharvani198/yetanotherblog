@@ -1,26 +1,48 @@
 {% extends "base.html" %} 
 {% block side_div %}
-<div class="side-div">
-	<button class="btn btn-default" data-toggle="collapse" data-target="#topics-list" id="topics-button">Topics</button>
-	<h4 id="topics-text">Topics</h4>
-	<div class="list-group" id="topics-list">
-		<a href="javascript:filter('all');" class="list-group-item"><span class="badge">{{topics.count}}</span>All</a>
-		{% for t in topics %}
-			<a href="javascript:filter('{{t.topic}}');" class="list-group-item"><span class="badge">{{t.count}}</span>{{t.topic}}</a>
-		{% endfor %}
-	</div>	
+<div class="side-div" >
+	<div class="topics-side-div">
+		<button class="btn btn-default" ng-click="toggleFunc()" id="topics-button">Topics</button>
+		<h4 id="topics-text">Topics</h4>
+		<div class="list-group" ng-show="showMe" id="topics-list">
+			<button ng-click="filterBlogs('all')" class="list-group-item"><span class="badge">{{total}}</span>All</button>
+			{% for t in topics %}
+				<button ng-click="filterBlogs('{{t.topic}}')" class="list-group-item"><span class="badge">{{t.count}}</span>{{t.topic}}</button>
+			{% endfor %}
+		</div>	
+	</div>
+	<div class="sort-side-div">
+		<button class="btn btn-default" ng-click="toggleFunc()"  id="sort-button">Sort By</button>
+		<h4 id="sort-text">Sort By </h4>
+		<div class="list-group" ng-show="showMe" id="sort-list">
+			<button class="list-group-item">Date
+				<span ng-click="sortBlogs('date','desc')"  class="badge sort-order">&gt;</span>
+				<span ng-click="sortBlogs('date','asc')" class="badge sort-order">&lt;</span>
+			</button>
+			<button class="list-group-item">Alphabetical
+				<span ng-click="sortBlogs('alpha','desc')"  class="badge sort-order">&gt;</span>
+				<span ng-click="sortBlogs('alpha','asc')" class="badge sort-order">&lt;</span>
+			</button>
+		</div>	
+	</div>
 </div>
 {% endblock side_div %}
 
 {% block content_div %}
+{% verbatim %} <!-- Conflicting template tags Django and Angular !-->
 <div class="blogs">
+	<div ng-repeat="b in filteredBlogs">
+		<a href="/blogpost/{{b.pk}}">
+			<div class="blog-div">
+				<h3>{{b.fields.title}}</h3>
+				<h4>{{b.fields.date|date}} | {{b.fields.topic}}</h4>
+			</div>
+		</a>
+	</div>
 </div>
-	
+{% endverbatim %}	
 {% endblock content_div %}
+
 {% block about_div %}
-<div class="about-div">
-	<h4>
-		Hey! I'm Sharvani. I work as a software developer in Bangalore. I love to code and write. 
-	</h4>	
-</div>
+	{% include "about.html" %}
 {% endblock about_div %}

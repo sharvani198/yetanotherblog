@@ -21,7 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^blogpost/(?P<post_id>[0-9]+)', views.view_post, name='view_post'),
-    url(r'about/$', views.about),
-    url(r'^filter/(?P<topic>[a-zA-Z]+)', views.filter, name='filter'),
-    url(r'^filter/$', views.filterjs)
+    url(r'^addComment/$', views.add_comment, name='addComment'),
+    url(r'^allBlogs/$', views.allBlogs)
 ]
