@@ -4,13 +4,6 @@ app.factory('blogposts', ['$http', function($http){
 	return $http.get('/allBlogs');
 }]);
 
-app.service('comments', ['$http', function($http){
-
-}])
-
-app.controller('CommentController', ['$scope','comments', function($scope, comments){
-	
-}]);
 
 app.controller('BlogController', ['$scope', 'blogposts', function($scope, blogposts){
 	blogposts.success(function(data){
