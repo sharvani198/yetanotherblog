@@ -32,7 +32,7 @@
 {% verbatim %} <!-- Conflicting template tags Django and Angular !-->
 <div class="blogs">
 	<div ng-repeat="b in filteredBlogs">
-		<a href="/blogpost/{{b.pk}}">
+		<a href="/blogpost/{{b.fields.title | titleUrl}}/{{b.pk}}">
 			<div class="blog-div">
 				<h3>{{b.fields.title}}</h3>
 				<h4>{{b.fields.date|date}} | {{b.fields.topic}}</h4>

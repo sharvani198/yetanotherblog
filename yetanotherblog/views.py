@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from yetanotherblog.models import Blogpost,Comments
+from yetanotherblog.models import Blogpost, Comments
 from django.db.models import Count
 from django.http import JsonResponse
 from django.core import serializers
@@ -16,9 +16,10 @@ def view_post(request, post_id):
     blogpost = Blogpost.objects.get(id=post_id)
     comments = Comments.objects.filter(post_id=post_id)
     file_path = blogpost.content_file.url
-    file = open('data/'+file_path)
+    file = open('data/'+file_path, 'r', encoding='utf-8')
     content = file.read()
-    return render(request, 'blogpost.html', {'content': content,'post': blogpost,
+    return render(request, 'blogpost.html', {'content': content,
+                                             'post': blogpost,
                                              'comments': comments})
 
 

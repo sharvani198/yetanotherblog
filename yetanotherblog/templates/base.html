@@ -11,14 +11,23 @@
     <link href="/static/blog/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/blog/css/base.css">
-	<script src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/blog/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/blog/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/blog/js/angular.min.js"></script>
-    <script type="text/javascript" src="/static/blog/js/base.js"></script>
     <script type="text/javascript" src="/static/blog/js/app.js"></script>
 
 </head>
 <body ng-app="blogs">
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 <div class="container">
 	<div class="page-header row">
 	<div class="col-md-10 col-sm-10 col-xs-10">

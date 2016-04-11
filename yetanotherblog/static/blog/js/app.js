@@ -4,20 +4,26 @@ app.factory('blogposts', ['$http', function($http){
 	return $http.get('/allBlogs');
 }]);
 
+app.filter('titleUrl', function(){
+	return function(x) {
+		x = x.toLowerCase()
+		return x.replace(/\W+/g, '-')
+	}
+
+});
 
 app.controller('BlogController', ['$scope', 'blogposts', function($scope, blogposts){
 	blogposts.success(function(data){
 		$scope.blogData = JSON.parse(data['blogs']);
 		$scope.filteredBlogs = $scope.blogData;
-		$scope.sortedBlogs = $scope.blogData;
 	})
 	$scope.filteredBlogs = $scope.blogData;
-	$scope.sortedBlogs = $scope.blogData;
 	$scope.filterBlogs = function(topic){
 		var blogs = $scope.blogData;
 		var filtered_blogs = []
 		if(topic === 'all'){
-			filtered_blogs = $scope.sortedBlogs;
+			filtered_blogs = $scope.blogData;
+			sortBlogsById(filtered_blogs)
 		} else{
 			for(var i =0;i<blogs.length;i++){
 				var t = blogs[i]['fields']['topic']
@@ -39,24 +45,33 @@ app.controller('BlogController', ['$scope', 'blogposts', function($scope, blogpo
         $scope.showMe = !$scope.showMe;
     }
 }]);
-sortBlogsByDate = function(blogData, orderBy){
-	blogData.sort(function(a,b){
+sortBlogsById = function (sortedBlogData) {
+	sortedBlogData.sort(function(a,b){
+		if(a['pk']>b['pk'])
+			return -1;
+		else
+			return 1;
+	});
+}
+
+sortBlogsByDate = function(sortedBlogData, orderBy){
+	sortedBlogData.sort(function(a,b){
 		if(a['fields']['date']<=b['fields']['date'])
 			return -1;
 		else
 			return 1;
 	});
 	if(orderBy==='desc')
-		blogData.reverse()
+		sortedBlogData.reverse()
 }
 
-sortBlogsByAlpha = function(blogData, orderBy){
-	blogData.sort(function(a,b){
+sortBlogsByAlpha = function(sortedBlogData, orderBy){
+	sortedBlogData.sort(function(a,b){
 		if(a['fields']['title']<=b['fields']['title'])
 			return -1;
 		else
 			return 1;
 	});
 	if(orderBy==='desc')
-		blogData.reverse()
+		sortedBlogData.reverse()
 }

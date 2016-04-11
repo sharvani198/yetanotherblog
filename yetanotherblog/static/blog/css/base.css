@@ -46,6 +46,9 @@ a:hover, a:visited, a:link, a:active{
 .form-control{
 	margin-bottom: 2px;
 }
+.pluginButtonContainer {
+	background-color: black !important;
+}
 @media screen and (max-width:650px){
 	.fixed-side-div{
 		position: static;
