@@ -55,15 +55,12 @@ a:hover, a:visited, a:link, a:active{
 		margin-top: 0%;
 	}
 	.picture-me {
-		display: none;
+		display: inline;
 	}
 	.about-div{
 		font-size: 0.5%;
 	}
-	#topics-button, #sort-button{
-		display: block;
-	}
-	#topics-text, #sort-text{
-		display:none;
+	.side-div {
+		display: none;
 	}
 }
